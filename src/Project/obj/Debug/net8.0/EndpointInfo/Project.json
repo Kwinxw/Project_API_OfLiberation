@@ -1,0 +1,2065 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Журнал освобождений студентов API",
+    "description": "API для управления журналом освобождений студентов от занятий физической культурой",
+    "termsOfService": "https://college.example.com/api-terms",
+    "contact": {
+      "name": "Администрация учебного заведения",
+      "url": "https://college.example.com/contact"
+    },
+    "license": {
+      "name": "Внутренняя лицензия учебного заведения",
+      "url": "https://college.example.com/api-license"
+    },
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Branches": {
+      "get": {
+        "tags": [
+          "Branches"
+        ],
+        "summary": "Получение всех отделений",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Branches"
+        ],
+        "summary": "Создание нового отделения",
+        "description": "Пример запроса:\r\n            \r\n    POST /Branches\r\n    {\r\n       \"idОтделения\" : 1,\r\n       \"название\" : \"Терапевтическое отделение\",\r\n       \"заведующий\" : \"Иванов Иван Иванович\",\r\n       \"датаСоздания\" : \"2024-01-15T00:00:00\"\r\n    }",
+        "requestBody": {
+          "description": "Отделение",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBranchesRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBranchesRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBranchesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Branches"
+        ],
+        "summary": "Обновление данных отделения",
+        "description": "Пример запроса:\r\n            \r\n    PUT /Branches\r\n    {\r\n       \"idОтделения\" : 1,\r\n       \"название\" : \"Терапевтическое отделение (обновленное)\",\r\n       \"заведующий\" : \"Петров Петр Петрович\",\r\n       \"датаСоздания\" : \"2024-01-15T00:00:00\"\r\n    }",
+        "requestBody": {
+          "description": "Отделение",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBranchesRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBranchesRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBranchesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Branches/{id}": {
+      "get": {
+        "tags": [
+          "Branches"
+        ],
+        "summary": "Получение отделения по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID отделения",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Branches"
+        ],
+        "summary": "Удаление отделения по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID отделения",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Grade": {
+      "get": {
+        "tags": [
+          "Grade"
+        ],
+        "summary": "Получение всех оценок",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Grade"
+        ],
+        "summary": "Создание новой оценки",
+        "description": "Пример запроса:\r\n            \r\n    POST /Grade\r\n    {\r\n       \"idОценки\" : 1,\r\n       \"idЗадания\" : 5,\r\n       \"балл\" : 85,\r\n       \"датаСдачи\" : \"2024-01-15\",\r\n       \"комментарий\" : \"Хорошая работа\",\r\n       \"преподаватель\" : \"Иванов И.И.\",\r\n       \"датаОценки\" : \"2024-01-16T10:30:00\"\r\n    }",
+        "requestBody": {
+          "description": "Оценка",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGradeRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGradeRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGradeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Grade"
+        ],
+        "summary": "Обновление оценки",
+        "description": "Пример запроса:\r\n            \r\n    PUT /Grade\r\n    {\r\n       \"idОценки\" : 1,\r\n       \"idЗадания\" : 5,\r\n       \"балл\" : 90,\r\n       \"датаСдачи\" : \"2024-01-15\",\r\n       \"комментарий\" : \"Отличная работа\",\r\n       \"преподаватель\" : \"Иванов И.И.\",\r\n       \"датаОценки\" : \"2024-01-16T10:30:00\"\r\n    }",
+        "requestBody": {
+          "description": "Оценка",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGradeRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGradeRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGradeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Grade/{id}": {
+      "get": {
+        "tags": [
+          "Grade"
+        ],
+        "summary": "Получение оценки по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID оценки",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Grade"
+        ],
+        "summary": "Удаление оценки по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID оценки",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Group": {
+      "get": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Получение всех групп",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Создание новой группы",
+        "description": "Пример запроса:\r\n            \r\n    POST /Group\r\n    {\r\n       \"idГруппы\" : 0,\r\n       \"название\" : \"ИТ-21\",\r\n       \"idСпециальности\" : 1,\r\n       \"курс\" : 2,\r\n       \"годПоступления\" : 2022\r\n    }",
+        "requestBody": {
+          "description": "Группа",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGroupsRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGroupsRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGroupsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Обновление данных группы",
+        "description": "Пример запроса:\r\n            \r\n    PUT /Group\r\n    {\r\n       \"idГруппы\" : 1,\r\n       \"название\" : \"ИТ-21\",\r\n       \"idСпециальности\" : 1,\r\n       \"курс\" : 3,\r\n       \"годПоступления\" : 2022\r\n    }",
+        "requestBody": {
+          "description": "Группа",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGroupsRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGroupsRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGroupsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Удаление группы по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "ID группы",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Group/{id}": {
+      "get": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Получение группы по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID группы",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Liberation": {
+      "get": {
+        "tags": [
+          "Liberation"
+        ],
+        "summary": "Получение всех освобождений",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Liberation"
+        ],
+        "summary": "Создание нового освобождения",
+        "description": "Пример запроса:\r\n            \r\n    POST /Liberation\r\n    {\r\n       \"idСтудента\" : 1,\r\n       \"idПричины\" : 2,\r\n       \"датаНачала\" : \"2024-01-15\",\r\n       \"датаОкончания\" : \"2024-01-20\",\r\n       \"номерСправки\" : \"СП-123456\",\r\n       \"кемВыдано\" : \"Поликлиника №1\",\r\n       \"примечание\" : \"ОРВИ\"\r\n    }",
+        "requestBody": {
+          "description": "Данные освобождения",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLiberationRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLiberationRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLiberationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Liberation"
+        ],
+        "summary": "Обновление данных освобождения",
+        "description": "Пример запроса:\r\n            \r\n    PUT /Liberation\r\n    {\r\n       \"idОсвобождения\" : 1,\r\n       \"idСтудента\" : 1,\r\n       \"idПричины\" : 2,\r\n       \"датаНачала\" : \"2024-01-15\",\r\n       \"датаОкончания\" : \"2024-01-25\",\r\n       \"номерСправки\" : \"СП-123456\",\r\n       \"кемВыдано\" : \"Поликлиника №1\",\r\n       \"примечание\" : \"ОРВИ с осложнениями\"\r\n    }",
+        "requestBody": {
+          "description": "Обновленные данные освобождения",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateLiberationRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateLiberationRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateLiberationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Liberation/{id}": {
+      "get": {
+        "tags": [
+          "Liberation"
+        ],
+        "summary": "Получение освобождения по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID освобождения",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Liberation"
+        ],
+        "summary": "Удаление освобождения по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID освобождения для удаления",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Load": {
+      "get": {
+        "tags": [
+          "Load"
+        ],
+        "summary": "Получение списка всей нагрузки",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Load"
+        ],
+        "summary": "Создание новой записи нагрузки",
+        "description": "Пример запроса:\r\n            \r\n    POST /Load\r\n    {\r\n       \"idНагрузки\" : 0,\r\n       \"idПреподавателя\" : 1,\r\n       \"idГруппы\" : 1,\r\n       \"семестр\" : 1,\r\n       \"учебныйГод\" : 2024\r\n    }",
+        "requestBody": {
+          "description": "Объект нагрузки",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLoadRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLoadRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLoadRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Load"
+        ],
+        "summary": "Обновление записи нагрузки",
+        "description": "Пример запроса:\r\n            \r\n    PUT /Load\r\n    {\r\n       \"idНагрузки\" : 1,\r\n       \"idПреподавателя\" : 1,\r\n       \"idГруппы\" : 1,\r\n       \"семестр\" : 2,\r\n       \"учебныйГод\" : 2024\r\n    }",
+        "requestBody": {
+          "description": "Объект нагрузки",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateLoadRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateLoadRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateLoadRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Load/{id}": {
+      "get": {
+        "tags": [
+          "Load"
+        ],
+        "summary": "Получение нагрузки по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID нагрузки",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Load"
+        ],
+        "summary": "Удаление записи нагрузки по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID нагрузки",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Quests": {
+      "get": {
+        "tags": [
+          "Quests"
+        ],
+        "summary": "Получение всех заданий",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Quests"
+        ],
+        "summary": "Создание нового задания",
+        "description": "Пример запроса:\r\n            \r\n    POST /Quests\r\n    {\r\n       \"idОсвобождения\" : 1,\r\n       \"idТипаЗадания\" : 2,\r\n       \"датаНазначения\" : \"2024-01-15\",\r\n       \"срокСдачи\" : \"2024-02-01\",\r\n       \"тема\" : \"Математический анализ\",\r\n       \"описание\" : \"Решить задачи по интегралам\"\r\n    }",
+        "requestBody": {
+          "description": "Задание",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateQuestsRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateQuestsRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateQuestsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Quests"
+        ],
+        "summary": "Обновление задания",
+        "description": "Пример запроса:\r\n            \r\n    PUT /Quests\r\n    {\r\n       \"idЗадания\" : 1,\r\n       \"idОсвобождения\" : 1,\r\n       \"idТипаЗадания\" : 2,\r\n       \"датаНазначения\" : \"2024-01-15\",\r\n       \"срокСдачи\" : \"2024-02-05\",\r\n       \"тема\" : \"Математический анализ - обновлено\",\r\n       \"описание\" : \"Решить задачи по интегралам и производным\"\r\n    }",
+        "requestBody": {
+          "description": "Задание",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateQuestsRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateQuestsRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateQuestsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Quests/{id}": {
+      "get": {
+        "tags": [
+          "Quests"
+        ],
+        "summary": "Получение задания по идентификатору",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор задания",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Quests"
+        ],
+        "summary": "Удаление задания",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор задания",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Quests/student/{studentId}": {
+      "get": {
+        "tags": [
+          "Quests"
+        ],
+        "summary": "Получение заданий по идентификатору студента",
+        "parameters": [
+          {
+            "name": "studentId",
+            "in": "path",
+            "description": "Идентификатор студента",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Quests/liberation/{liberationId}": {
+      "get": {
+        "tags": [
+          "Quests"
+        ],
+        "summary": "Получение заданий по идентификатору освобождения",
+        "parameters": [
+          {
+            "name": "liberationId",
+            "in": "path",
+            "description": "Идентификатор освобождения",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Quests/overdue": {
+      "get": {
+        "tags": [
+          "Quests"
+        ],
+        "summary": "Получение просроченных заданий",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ReasonsForLiberation": {
+      "get": {
+        "tags": [
+          "ReasonsForLiberation"
+        ],
+        "summary": "Получение всех причин освобождения",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ReasonsForLiberation"
+        ],
+        "summary": "Создание новой причины освобождения",
+        "description": "Пример запроса:\r\n            \r\n    POST /ReasonsForLiberation\r\n    {\r\n       \"idПричины\" : 1,\r\n       \"кодПричины\" : \"B-01\",\r\n       \"название\" : \"Заболевание\",\r\n       \"максДней\" : 30,\r\n       \"требуетСправку\" : true\r\n    }",
+        "requestBody": {
+          "description": "Причина освобождения",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReasonsForLiberationRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReasonsForLiberationRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReasonsForLiberationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ReasonsForLiberation"
+        ],
+        "summary": "Обновление данных причины освобождения",
+        "description": "Пример запроса:\r\n            \r\n    PUT /ReasonsForLiberation\r\n    {\r\n       \"idПричины\" : 1,\r\n       \"кодПричины\" : \"B-01\",\r\n       \"название\" : \"Заболевание (обновленное)\",\r\n       \"максДней\" : 45,\r\n       \"требуетСправку\" : true\r\n    }",
+        "requestBody": {
+          "description": "Причина освобождения",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateReasonsForLiberationRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateReasonsForLiberationRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateReasonsForLiberationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ReasonsForLiberation/{id}": {
+      "get": {
+        "tags": [
+          "ReasonsForLiberation"
+        ],
+        "summary": "Получение причины освобождения по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID причины освобождения",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ReasonsForLiberation"
+        ],
+        "summary": "Удаление причины освобождения",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID причины освобождения",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Specialties": {
+      "get": {
+        "tags": [
+          "Specialties"
+        ],
+        "summary": "Получение всех специальностей",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Specialties"
+        ],
+        "summary": "Создание новой специальности",
+        "description": "Пример запроса:\r\n            \r\n    POST /Specialties\r\n    {\r\n       \"idСпециальности\" : 0,\r\n       \"кодСпециальности\" : \"09.02.07\",\r\n       \"название\" : \"Информационные системы и программирование\",\r\n       \"idОтделения\" : 1\r\n    }",
+        "requestBody": {
+          "description": "Специальность",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSpecialitiesRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSpecialitiesRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSpecialitiesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Specialties"
+        ],
+        "summary": "Обновление данных специальности",
+        "description": "Пример запроса:\r\n            \r\n    PUT /Specialties\r\n    {\r\n       \"idСпециальности\" : 1,\r\n       \"кодСпециальности\" : \"09.02.07\",\r\n       \"название\" : \"Информационные системы и программирование (обновленное)\",\r\n       \"idОтделения\" : 1\r\n    }",
+        "requestBody": {
+          "description": "Специальность",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSpecialitiesRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSpecialitiesRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSpecialitiesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Specialties/{id}": {
+      "get": {
+        "tags": [
+          "Specialties"
+        ],
+        "summary": "Получение специальности по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID специальности",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Specialties"
+        ],
+        "summary": "Удаление специальности по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID специальности",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Students": {
+      "get": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Получение списка всех студентов",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Создание нового студента",
+        "description": "Пример запроса:\r\n            \r\n    POST /Students\r\n    {\r\n       \"idСтудента\" : 0,\r\n       \"фамилия\" : \"Иванов\",\r\n       \"имя\" : \"Иван\",\r\n       \"отчество\" : \"Иванович\",\r\n       \"idГруппы\" : 1,\r\n       \"номерЗачетки\" : \"АБВ123456\",\r\n       \"телефон\" : \"+7(999)123-45-67\",\r\n       \"email\" : \"ivanov@example.com\",\r\n       \"датаРегистрации\" : \"2024-01-15T10:30:00\"\r\n    }",
+        "requestBody": {
+          "description": "Объект студента",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateStudentRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateStudentRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateStudentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Обновление данных студента",
+        "description": "Пример запроса:\r\n            \r\n    PUT /Students\r\n    {\r\n       \"idСтудента\" : 1,\r\n       \"фамилия\" : \"Петров\",\r\n       \"имя\" : \"Петр\",\r\n       \"отчество\" : \"Петрович\",\r\n       \"idГруппы\" : 2,\r\n       \"номерЗачетки\" : \"АБВ123456\",\r\n       \"телефон\" : \"+7(999)765-43-21\",\r\n       \"email\" : \"petrov@example.com\",\r\n       \"датаРегистрации\" : \"2024-01-15T10:30:00\"\r\n    }",
+        "requestBody": {
+          "description": "Объект студента с обновленными данными",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStudentRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStudentRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStudentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Удаление студента",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Идентификатор студента (IdСтудента)",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Students/{id}": {
+      "get": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Получение студента по идентификатору",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор студента (IdСтудента)",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TaskTypes": {
+      "get": {
+        "tags": [
+          "TaskTypes"
+        ],
+        "summary": "Получение всех типов заданий",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "TaskTypes"
+        ],
+        "summary": "Создание нового типа задания",
+        "description": "Пример запроса:\r\n            \r\n    POST /TaskTypes\r\n    {\r\n       \"idТипаЗадания\" : 0,\r\n       \"кодЗадания\" : \"TASK001\",\r\n       \"название\" : \"Практическое задание\",\r\n       \"описание\" : \"Описание практического задания\",\r\n       \"максБалл\" : 100\r\n    }",
+        "requestBody": {
+          "description": "Тип задания",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTaskTypeRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTaskTypeRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTaskTypeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "TaskTypes"
+        ],
+        "summary": "Обновление типа задания",
+        "description": "Пример запроса:\r\n            \r\n    PUT /TaskTypes\r\n    {\r\n       \"idТипаЗадания\" : 1,\r\n       \"кодЗадания\" : \"TASK001\",\r\n       \"название\" : \"Обновленное задание\",\r\n       \"описание\" : \"Обновленное описание задания\",\r\n       \"максБалл\" : 150\r\n    }",
+        "requestBody": {
+          "description": "Тип задания",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTaskTypeRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTaskTypeRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTaskTypeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TaskTypes/{id}": {
+      "get": {
+        "tags": [
+          "TaskTypes"
+        ],
+        "summary": "Получение типа задания по идентификатору",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор типа задания",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "TaskTypes"
+        ],
+        "summary": "Удаление типа задания",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор типа задания",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Teachers": {
+      "get": {
+        "tags": [
+          "Teachers"
+        ],
+        "summary": "Получение всех преподавателей",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Teachers"
+        ],
+        "summary": "Создание нового преподавателя",
+        "description": "Пример запроса:\r\n            \r\n    POST /Teachers\r\n    {\r\n       \"idПреподавателя\" : 1,\r\n       \"фамилия\" : \"Иванов\",\r\n       \"имя\" : \"Иван\",\r\n       \"отчество\" : \"Иванович\",\r\n       \"должность\" : \"Доцент\",\r\n       \"ставка\" : 1.0\r\n    }",
+        "requestBody": {
+          "description": "Объект преподавателя",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTeacherRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTeacherRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTeacherRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Teachers"
+        ],
+        "summary": "Обновление данных преподавателя",
+        "description": "Пример запроса:\r\n            \r\n    PUT /Teachers\r\n    {\r\n       \"idПреподавателя\" : 1,\r\n       \"фамилия\" : \"Петров\",\r\n       \"имя\" : \"Петр\",\r\n       \"отчество\" : \"Петрович\",\r\n       \"должность\" : \"Профессор\",\r\n       \"ставка\" : 1.5\r\n    }",
+        "requestBody": {
+          "description": "Объект преподавателя с обновленными данными",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTeacherRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTeacherRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTeacherRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Teachers/{id}": {
+      "get": {
+        "tags": [
+          "Teachers"
+        ],
+        "summary": "Получение преподавателя по идентификатору",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор преподавателя",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Teachers"
+        ],
+        "summary": "Удаление преподавателя по идентификатору",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор преподавателя",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateBranchesRequest": {
+        "type": "object",
+        "properties": {
+          "название": {
+            "type": "string",
+            "nullable": true
+          },
+          "заведующий": {
+            "type": "string",
+            "nullable": true
+          },
+          "датаСоздания": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateGradeRequest": {
+        "type": "object",
+        "properties": {
+          "балл": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "датаСдачи": {
+            "type": "string",
+            "format": "date"
+          },
+          "комментарий": {
+            "type": "string",
+            "nullable": true
+          },
+          "преподаватель": {
+            "type": "string",
+            "nullable": true
+          },
+          "датаОценки": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateGroupsRequest": {
+        "type": "object",
+        "properties": {
+          "название": {
+            "type": "string",
+            "nullable": true
+          },
+          "idСпециальности": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "курс": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "годПоступления": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateLiberationRequest": {
+        "type": "object",
+        "properties": {
+          "idОсвобождения": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idСтудента": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idПричины": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "датаНачала": {
+            "type": "string",
+            "format": "date"
+          },
+          "датаОкончания": {
+            "type": "string",
+            "format": "date"
+          },
+          "номерСправки": {
+            "type": "string",
+            "nullable": true
+          },
+          "кемВыдано": {
+            "type": "string",
+            "nullable": true
+          },
+          "примечание": {
+            "type": "string",
+            "nullable": true
+          },
+          "датаСоздания": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateLoadRequest": {
+        "type": "object",
+        "properties": {
+          "семестр": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "учебныйГод": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateQuestsRequest": {
+        "type": "object",
+        "properties": {
+          "датаНазначения": {
+            "type": "string",
+            "format": "date"
+          },
+          "срокСдачи": {
+            "type": "string",
+            "format": "date"
+          },
+          "тема": {
+            "type": "string",
+            "nullable": true
+          },
+          "описание": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateReasonsForLiberationRequest": {
+        "type": "object",
+        "properties": {
+          "кодПричины": {
+            "type": "string",
+            "nullable": true
+          },
+          "название": {
+            "type": "string",
+            "nullable": true
+          },
+          "максДней": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "требуетСправку": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateSpecialitiesRequest": {
+        "type": "object",
+        "properties": {
+          "кодСпециальности": {
+            "type": "string",
+            "nullable": true
+          },
+          "название": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateStudentRequest": {
+        "type": "object",
+        "properties": {
+          "фамилия": {
+            "type": "string",
+            "nullable": true
+          },
+          "имя": {
+            "type": "string",
+            "nullable": true
+          },
+          "отчество": {
+            "type": "string",
+            "nullable": true
+          },
+          "idГруппы": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "номерЗачетки": {
+            "type": "string",
+            "nullable": true
+          },
+          "телефон": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "датаРегистрации": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateTaskTypeRequest": {
+        "type": "object",
+        "properties": {
+          "кодЗадания": {
+            "type": "string",
+            "nullable": true
+          },
+          "название": {
+            "type": "string",
+            "nullable": true
+          },
+          "описание": {
+            "type": "string",
+            "nullable": true
+          },
+          "максБалл": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateTeacherRequest": {
+        "type": "object",
+        "properties": {
+          "фамилия": {
+            "type": "string",
+            "nullable": true
+          },
+          "имя": {
+            "type": "string",
+            "nullable": true
+          },
+          "отчество": {
+            "type": "string",
+            "nullable": true
+          },
+          "должность": {
+            "type": "string",
+            "nullable": true
+          },
+          "ставка": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateBranchesRequest": {
+        "type": "object",
+        "properties": {
+          "idОтделения": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "название": {
+            "type": "string",
+            "nullable": true
+          },
+          "заведующий": {
+            "type": "string",
+            "nullable": true
+          },
+          "датаСоздания": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateGradeRequest": {
+        "type": "object",
+        "properties": {
+          "idОценки": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idЗадания": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "балл": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "датаСдачи": {
+            "type": "string",
+            "format": "date"
+          },
+          "комментарий": {
+            "type": "string",
+            "nullable": true
+          },
+          "преподаватель": {
+            "type": "string",
+            "nullable": true
+          },
+          "датаОценки": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateGroupsRequest": {
+        "type": "object",
+        "properties": {
+          "idГруппы": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "название": {
+            "type": "string",
+            "nullable": true
+          },
+          "idСпециальности": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "курс": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "годПоступления": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateLiberationRequest": {
+        "type": "object",
+        "properties": {
+          "idОсвобождения": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idСтудента": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idПричины": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "датаНачала": {
+            "type": "string",
+            "format": "date"
+          },
+          "датаОкончания": {
+            "type": "string",
+            "format": "date"
+          },
+          "номерСправки": {
+            "type": "string",
+            "nullable": true
+          },
+          "кемВыдано": {
+            "type": "string",
+            "nullable": true
+          },
+          "примечание": {
+            "type": "string",
+            "nullable": true
+          },
+          "датаСоздания": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateLoadRequest": {
+        "type": "object",
+        "properties": {
+          "idНагрузки": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idПреподавателя": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idГруппы": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "семестр": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "учебныйГод": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateQuestsRequest": {
+        "type": "object",
+        "properties": {
+          "idЗадания": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idОсвобождения": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idТипаЗадания": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "датаНазначения": {
+            "type": "string",
+            "format": "date"
+          },
+          "срокСдачи": {
+            "type": "string",
+            "format": "date"
+          },
+          "тема": {
+            "type": "string",
+            "nullable": true
+          },
+          "описание": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateReasonsForLiberationRequest": {
+        "type": "object",
+        "properties": {
+          "idПричины": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "кодПричины": {
+            "type": "string",
+            "nullable": true
+          },
+          "название": {
+            "type": "string",
+            "nullable": true
+          },
+          "максДней": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "требуетСправку": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSpecialitiesRequest": {
+        "type": "object",
+        "properties": {
+          "idСпециальности": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "кодСпециальности": {
+            "type": "string",
+            "nullable": true
+          },
+          "название": {
+            "type": "string",
+            "nullable": true
+          },
+          "idОтделения": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateStudentRequest": {
+        "type": "object",
+        "properties": {
+          "idСтудента": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "фамилия": {
+            "type": "string",
+            "nullable": true
+          },
+          "имя": {
+            "type": "string",
+            "nullable": true
+          },
+          "отчество": {
+            "type": "string",
+            "nullable": true
+          },
+          "idГруппы": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "номерЗачетки": {
+            "type": "string",
+            "nullable": true
+          },
+          "телефон": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "датаРегистрации": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateTaskTypeRequest": {
+        "type": "object",
+        "properties": {
+          "idТипаЗадания": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "кодЗадания": {
+            "type": "string",
+            "nullable": true
+          },
+          "название": {
+            "type": "string",
+            "nullable": true
+          },
+          "описание": {
+            "type": "string",
+            "nullable": true
+          },
+          "максБалл": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateTeacherRequest": {
+        "type": "object",
+        "properties": {
+          "idПреподавателя": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "фамилия": {
+            "type": "string",
+            "nullable": true
+          },
+          "имя": {
+            "type": "string",
+            "nullable": true
+          },
+          "отчество": {
+            "type": "string",
+            "nullable": true
+          },
+          "должность": {
+            "type": "string",
+            "nullable": true
+          },
+          "ставка": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

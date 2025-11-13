@@ -1,0 +1,706 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Project</name>
+    </assembly>
+    <members>
+        <member name="M:Project.Controllers.BranchesController.GetAll">
+            <summary>
+            Получение всех отделений
+            </summary>
+            <returns>Список всех отделений</returns>
+        </member>
+        <member name="M:Project.Controllers.BranchesController.GetById(System.Int32)">
+            <summary>
+            Получение отделения по ID
+            </summary>
+            <param name="id">ID отделения</param>
+            <returns>Данные отделения</returns>
+        </member>
+        <member name="M:Project.Controllers.BranchesController.Add(Project.Contracts.Branches.CreateBranchesRequest)">
+             <summary>
+             Создание нового отделения
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 POST /Branches
+                 {
+                    "idОтделения" : 1,
+                    "название" : "Терапевтическое отделение",
+                    "заведующий" : "Иванов Иван Иванович",
+                    "датаСоздания" : "2024-01-15T00:00:00"
+                 }
+            
+             </remarks>
+             <param name="request">Отделение</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.BranchesController.Update(Project.Contracts.Branches.UpdateBranchesRequest)">
+             <summary>
+             Обновление данных отделения
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 PUT /Branches
+                 {
+                    "idОтделения" : 1,
+                    "название" : "Терапевтическое отделение (обновленное)",
+                    "заведующий" : "Петров Петр Петрович",
+                    "датаСоздания" : "2024-01-15T00:00:00"
+                 }
+            
+             </remarks>
+             <param name="request">Отделение</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.BranchesController.Delete(System.Int32)">
+            <summary>
+            Удаление отделения по ID
+            </summary>
+            <param name="id">ID отделения</param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.GradeController.GetAll">
+            <summary>
+            Получение всех оценок
+            </summary>
+            <returns>Список всех оценок</returns>
+        </member>
+        <member name="M:Project.Controllers.GradeController.GetById(System.Int32)">
+            <summary>
+            Получение оценки по ID
+            </summary>
+            <param name="id">ID оценки</param>
+            <returns>Оценка с указанным ID</returns>
+        </member>
+        <member name="M:Project.Controllers.GradeController.Add(Project.Contracts.Grade.CreateGradeRequest)">
+             <summary>
+             Создание новой оценки
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 POST /Grade
+                 {
+                    "idОценки" : 1,
+                    "idЗадания" : 5,
+                    "балл" : 85,
+                    "датаСдачи" : "2024-01-15",
+                    "комментарий" : "Хорошая работа",
+                    "преподаватель" : "Иванов И.И.",
+                    "датаОценки" : "2024-01-16T10:30:00"
+                 }
+            
+             </remarks>
+             <param name="request">Оценка</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.GradeController.Update(Project.Contracts.Grade.UpdateGradeRequest)">
+             <summary>
+             Обновление оценки
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 PUT /Grade
+                 {
+                    "idОценки" : 1,
+                    "idЗадания" : 5,
+                    "балл" : 90,
+                    "датаСдачи" : "2024-01-15",
+                    "комментарий" : "Отличная работа",
+                    "преподаватель" : "Иванов И.И.",
+                    "датаОценки" : "2024-01-16T10:30:00"
+                 }
+            
+             </remarks>
+             <param name="request">Оценка</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.GradeController.Delete(System.Int32)">
+            <summary>
+            Удаление оценки по ID
+            </summary>
+            <param name="id">ID оценки</param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.GroupController.GetAll">
+            <summary>
+            Получение всех групп
+            </summary>
+            <returns>Список всех групп</returns>
+        </member>
+        <member name="M:Project.Controllers.GroupController.GetById(System.Int32)">
+            <summary>
+            Получение группы по ID
+            </summary>
+            <param name="id">ID группы</param>
+            <returns>Группа с указанным ID</returns>
+        </member>
+        <member name="M:Project.Controllers.GroupController.Add(Project.Contracts.Groups.CreateGroupsRequest)">
+             <summary>
+             Создание новой группы
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 POST /Group
+                 {
+                    "idГруппы" : 0,
+                    "название" : "ИТ-21",
+                    "idСпециальности" : 1,
+                    "курс" : 2,
+                    "годПоступления" : 2022
+                 }
+            
+             </remarks>
+             <param name="request">Группа</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.GroupController.Update(Project.Contracts.Groups.UpdateGroupsRequest)">
+             <summary>
+             Обновление данных группы
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 PUT /Group
+                 {
+                    "idГруппы" : 1,
+                    "название" : "ИТ-21",
+                    "idСпециальности" : 1,
+                    "курс" : 3,
+                    "годПоступления" : 2022
+                 }
+            
+             </remarks>
+             <param name="request">Группа</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.GroupController.Delete(System.Int32)">
+            <summary>
+            Удаление группы по ID
+            </summary>
+            <param name="id">ID группы</param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.LiberationController.GetAll">
+            <summary>
+            Получение всех освобождений
+            </summary>
+            <returns>Список всех освобождений</returns>
+        </member>
+        <member name="M:Project.Controllers.LiberationController.GetById(System.Int32)">
+            <summary>
+            Получение освобождения по ID
+            </summary>
+            <param name="id">ID освобождения</param>
+            <returns>Освобождение с указанным ID</returns>
+        </member>
+        <member name="M:Project.Controllers.LiberationController.Add(Project.Contracts.Liberation.CreateLiberationRequest)">
+             <summary>
+             Создание нового освобождения
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 POST /Liberation
+                 {
+                    "idСтудента" : 1,
+                    "idПричины" : 2,
+                    "датаНачала" : "2024-01-15",
+                    "датаОкончания" : "2024-01-20",
+                    "номерСправки" : "СП-123456",
+                    "кемВыдано" : "Поликлиника №1",
+                    "примечание" : "ОРВИ"
+                 }
+            
+             </remarks>
+             <param name="request">Данные освобождения</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.LiberationController.Update(Project.Contracts.Liberation.UpdateLiberationRequest)">
+             <summary>
+             Обновление данных освобождения
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 PUT /Liberation
+                 {
+                    "idОсвобождения" : 1,
+                    "idСтудента" : 1,
+                    "idПричины" : 2,
+                    "датаНачала" : "2024-01-15",
+                    "датаОкончания" : "2024-01-25",
+                    "номерСправки" : "СП-123456",
+                    "кемВыдано" : "Поликлиника №1",
+                    "примечание" : "ОРВИ с осложнениями"
+                 }
+            
+             </remarks>
+             <param name="request">Обновленные данные освобождения</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.LiberationController.Delete(System.Int32)">
+            <summary>
+            Удаление освобождения по ID
+            </summary>
+            <param name="id">ID освобождения для удаления</param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.LoadController.GetAll">
+            <summary>
+            Получение списка всей нагрузки
+            </summary>
+            <returns>Список записей нагрузки</returns>
+        </member>
+        <member name="M:Project.Controllers.LoadController.GetById(System.Int32)">
+            <summary>
+            Получение нагрузки по ID
+            </summary>
+            <param name="id">ID нагрузки</param>
+            <returns>Запись нагрузки</returns>
+        </member>
+        <member name="M:Project.Controllers.LoadController.Add(Project.Contracts.Load.CreateLoadRequest)">
+             <summary>
+             Создание новой записи нагрузки
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 POST /Load
+                 {
+                    "idНагрузки" : 0,
+                    "idПреподавателя" : 1,
+                    "idГруппы" : 1,
+                    "семестр" : 1,
+                    "учебныйГод" : 2024
+                 }
+            
+             </remarks>
+             <param name="request">Объект нагрузки</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.LoadController.Update(Project.Contracts.Load.UpdateLoadRequest)">
+             <summary>
+             Обновление записи нагрузки
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 PUT /Load
+                 {
+                    "idНагрузки" : 1,
+                    "idПреподавателя" : 1,
+                    "idГруппы" : 1,
+                    "семестр" : 2,
+                    "учебныйГод" : 2024
+                 }
+            
+             </remarks>
+             <param name="request">Объект нагрузки</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.LoadController.Delete(System.Int32)">
+            <summary>
+            Удаление записи нагрузки по ID
+            </summary>
+            <param name="id">ID нагрузки</param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.QuestsController.GetAll">
+            <summary>
+            Получение всех заданий
+            </summary>
+            <returns>Список всех заданий</returns>
+        </member>
+        <member name="M:Project.Controllers.QuestsController.GetById(System.Int32)">
+            <summary>
+            Получение задания по идентификатору
+            </summary>
+            <param name="id">Идентификатор задания</param>
+            <returns>Задание</returns>
+        </member>
+        <member name="M:Project.Controllers.QuestsController.GetByStudentId(System.Int32)">
+            <summary>
+            Получение заданий по идентификатору студента
+            </summary>
+            <param name="studentId">Идентификатор студента</param>
+            <returns>Список заданий студента</returns>
+        </member>
+        <member name="M:Project.Controllers.QuestsController.GetByLiberationId(System.Int32)">
+            <summary>
+            Получение заданий по идентификатору освобождения
+            </summary>
+            <param name="liberationId">Идентификатор освобождения</param>
+            <returns>Список заданий для освобождения</returns>
+        </member>
+        <member name="M:Project.Controllers.QuestsController.GetOverdueQuests">
+            <summary>
+            Получение просроченных заданий
+            </summary>
+            <returns>Список просроченных заданий</returns>
+        </member>
+        <member name="M:Project.Controllers.QuestsController.Create(Project.Contracts.Quests.CreateQuestsRequest)">
+             <summary>
+             Создание нового задания
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 POST /Quests
+                 {
+                    "idОсвобождения" : 1,
+                    "idТипаЗадания" : 2,
+                    "датаНазначения" : "2024-01-15",
+                    "срокСдачи" : "2024-02-01",
+                    "тема" : "Математический анализ",
+                    "описание" : "Решить задачи по интегралам"
+                 }
+            
+             </remarks>
+             <param name="request">Задание</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.QuestsController.Update(Project.Contracts.Quests.UpdateQuestsRequest)">
+             <summary>
+             Обновление задания
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 PUT /Quests
+                 {
+                    "idЗадания" : 1,
+                    "idОсвобождения" : 1,
+                    "idТипаЗадания" : 2,
+                    "датаНазначения" : "2024-01-15",
+                    "срокСдачи" : "2024-02-05",
+                    "тема" : "Математический анализ - обновлено",
+                    "описание" : "Решить задачи по интегралам и производным"
+                 }
+            
+             </remarks>
+             <param name="request">Задание</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.QuestsController.Delete(System.Int32)">
+            <summary>
+            Удаление задания
+            </summary>
+            <param name="id">Идентификатор задания</param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.ReasonsForLiberationController.GetAll">
+            <summary>
+            Получение всех причин освобождения
+            </summary>
+            <returns>Список всех причин освобождения</returns>
+        </member>
+        <member name="M:Project.Controllers.ReasonsForLiberationController.GetById(System.Int32)">
+            <summary>
+            Получение причины освобождения по ID
+            </summary>
+            <param name="id">ID причины освобождения</param>
+            <returns>Данные причины освобождения</returns>
+        </member>
+        <member name="M:Project.Controllers.ReasonsForLiberationController.Add(Project.Contracts.ReasonsForLiberation.CreateReasonsForLiberationRequest)">
+             <summary>
+             Создание новой причины освобождения
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 POST /ReasonsForLiberation
+                 {
+                    "idПричины" : 1,
+                    "кодПричины" : "B-01",
+                    "название" : "Заболевание",
+                    "максДней" : 30,
+                    "требуетСправку" : true
+                 }
+            
+             </remarks>
+             <param name="request">Причина освобождения</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.ReasonsForLiberationController.Update(Project.Contracts.ReasonsForLiberation.UpdateReasonsForLiberationRequest)">
+             <summary>
+             Обновление данных причины освобождения
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 PUT /ReasonsForLiberation
+                 {
+                    "idПричины" : 1,
+                    "кодПричины" : "B-01",
+                    "название" : "Заболевание (обновленное)",
+                    "максДней" : 45,
+                    "требуетСправку" : true
+                 }
+            
+             </remarks>
+             <param name="request">Причина освобождения</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.ReasonsForLiberationController.Delete(System.Int32)">
+            <summary>
+            Удаление причины освобождения
+            </summary>
+            <param name="id">ID причины освобождения</param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.SpecialtiesController.GetAll">
+            <summary>
+            Получение всех специальностей
+            </summary>
+            <returns>Список всех специальностей</returns>
+        </member>
+        <member name="M:Project.Controllers.SpecialtiesController.GetById(System.Int32)">
+            <summary>
+            Получение специальности по ID
+            </summary>
+            <param name="id">ID специальности</param>
+            <returns>Данные специальности</returns>
+        </member>
+        <member name="M:Project.Controllers.SpecialtiesController.Create(Project.Contracts.Specialities.CreateSpecialitiesRequest)">
+             <summary>
+             Создание новой специальности
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 POST /Specialties
+                 {
+                    "idСпециальности" : 0,
+                    "кодСпециальности" : "09.02.07",
+                    "название" : "Информационные системы и программирование",
+                    "idОтделения" : 1
+                 }
+            
+             </remarks>
+             <param name="request">Специальность</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.SpecialtiesController.Update(Project.Contracts.Specialities.UpdateSpecialitiesRequest)">
+             <summary>
+             Обновление данных специальности
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 PUT /Specialties
+                 {
+                    "idСпециальности" : 1,
+                    "кодСпециальности" : "09.02.07",
+                    "название" : "Информационные системы и программирование (обновленное)",
+                    "idОтделения" : 1
+                 }
+            
+             </remarks>
+             <param name="request">Специальность</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.SpecialtiesController.Delete(System.Int32)">
+            <summary>
+            Удаление специальности по ID
+            </summary>
+            <param name="id">ID специальности</param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.StudentsController.GetAll">
+            <summary>
+            Получение списка всех студентов
+            </summary>
+            <returns>Список всех студентов</returns>
+        </member>
+        <member name="M:Project.Controllers.StudentsController.GetById(System.Int32)">
+            <summary>
+            Получение студента по идентификатору
+            </summary>
+            <param name="id">Идентификатор студента (IdСтудента)</param>
+            <returns>Данные студента</returns>
+        </member>
+        <member name="M:Project.Controllers.StudentsController.Add(Project.Contracts.Student.CreateStudentRequest)">
+             <summary>
+             Создание нового студента
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 POST /Students
+                 {
+                    "idСтудента" : 0,
+                    "фамилия" : "Иванов",
+                    "имя" : "Иван",
+                    "отчество" : "Иванович",
+                    "idГруппы" : 1,
+                    "номерЗачетки" : "АБВ123456",
+                    "телефон" : "+7(999)123-45-67",
+                    "email" : "ivanov@example.com",
+                    "датаРегистрации" : "2024-01-15T10:30:00"
+                 }
+            
+             </remarks>
+             <param name="request">Объект студента</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.StudentsController.Update(Project.Contracts.Student.UpdateStudentRequest)">
+             <summary>
+             Обновление данных студента
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 PUT /Students
+                 {
+                    "idСтудента" : 1,
+                    "фамилия" : "Петров",
+                    "имя" : "Петр",
+                    "отчество" : "Петрович",
+                    "idГруппы" : 2,
+                    "номерЗачетки" : "АБВ123456",
+                    "телефон" : "+7(999)765-43-21",
+                    "email" : "petrov@example.com",
+                    "датаРегистрации" : "2024-01-15T10:30:00"
+                 }
+            
+             </remarks>
+             <param name="request">Объект студента с обновленными данными</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.StudentsController.Delete(System.Int32)">
+            <summary>
+            Удаление студента
+            </summary>
+            <param name="id">Идентификатор студента (IdСтудента)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.TaskTypesController.GetAll">
+            <summary>
+            Получение всех типов заданий
+            </summary>
+            <returns>Список всех типов заданий</returns>
+        </member>
+        <member name="M:Project.Controllers.TaskTypesController.GetById(System.Int32)">
+            <summary>
+            Получение типа задания по идентификатору
+            </summary>
+            <param name="id">Идентификатор типа задания</param>
+            <returns>Тип задания</returns>
+        </member>
+        <member name="M:Project.Controllers.TaskTypesController.Add(Project.Contracts.TaskType.CreateTaskTypeRequest)">
+             <summary>
+             Создание нового типа задания
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 POST /TaskTypes
+                 {
+                    "idТипаЗадания" : 0,
+                    "кодЗадания" : "TASK001",
+                    "название" : "Практическое задание",
+                    "описание" : "Описание практического задания",
+                    "максБалл" : 100
+                 }
+            
+             </remarks>
+             <param name="request">Тип задания</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.TaskTypesController.Update(Project.Contracts.TaskType.UpdateTaskTypeRequest)">
+             <summary>
+             Обновление типа задания
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 PUT /TaskTypes
+                 {
+                    "idТипаЗадания" : 1,
+                    "кодЗадания" : "TASK001",
+                    "название" : "Обновленное задание",
+                    "описание" : "Обновленное описание задания",
+                    "максБалл" : 150
+                 }
+            
+             </remarks>
+             <param name="request">Тип задания</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.TaskTypesController.Delete(System.Int32)">
+            <summary>
+            Удаление типа задания
+            </summary>
+            <param name="id">Идентификатор типа задания</param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.TeachersController.GetAll">
+            <summary>
+            Получение всех преподавателей
+            </summary>
+            <returns>Список всех преподавателей</returns>
+        </member>
+        <member name="M:Project.Controllers.TeachersController.GetById(System.Int32)">
+            <summary>
+            Получение преподавателя по идентификатору
+            </summary>
+            <param name="id">Идентификатор преподавателя</param>
+            <returns>Данные преподавателя</returns>
+        </member>
+        <member name="M:Project.Controllers.TeachersController.Add(Project.Contracts.Teachers.CreateTeacherRequest)">
+             <summary>
+             Создание нового преподавателя
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 POST /Teachers
+                 {
+                    "idПреподавателя" : 1,
+                    "фамилия" : "Иванов",
+                    "имя" : "Иван",
+                    "отчество" : "Иванович",
+                    "должность" : "Доцент",
+                    "ставка" : 1.0
+                 }
+            
+             </remarks>
+             <param name="request">Объект преподавателя</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.TeachersController.Update(Project.Contracts.Teachers.UpdateTeacherRequest)">
+             <summary>
+             Обновление данных преподавателя
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+                 PUT /Teachers
+                 {
+                    "idПреподавателя" : 1,
+                    "фамилия" : "Петров",
+                    "имя" : "Петр",
+                    "отчество" : "Петрович",
+                    "должность" : "Профессор",
+                    "ставка" : 1.5
+                 }
+            
+             </remarks>
+             <param name="request">Объект преподавателя с обновленными данными</param>
+             <returns></returns>
+        </member>
+        <member name="M:Project.Controllers.TeachersController.Delete(System.Int32)">
+            <summary>
+            Удаление преподавателя по идентификатору
+            </summary>
+            <param name="id">Идентификатор преподавателя</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
