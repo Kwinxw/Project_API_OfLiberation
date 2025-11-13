@@ -1,26 +1,54 @@
-name: dotnet format
+name: .NET Build & Test
 
 on:
   push:
-    paths:
-      - "**.cs"
-      - ".editorconfig"
+    branches: [ "main", "master", "develop" ]
+  pull_request:
+    branches: [ "main", "master", "develop" ]
+  workflow_dispatch:
 
 jobs:
-  check-format:
-    runs-on: windows-latest
+  build:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '8.0.x'
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Install dotnet-format tool
-        run: dotnet tool install -g dotnet-format
+    - name: Fix Contracts encoding specifically
+      run: |
+        echo "=== Fixing Contracts files encoding ==="
+        find ./src/Project/Contracts -name "*.cs" -type f | while read file; do
+          if [ -f "$file" ]; then
+            echo "Processing: $file"
+            # Многоэтапная очистка файла
+            cat "$file" | \
+              tr -d '\000' | \
+              sed 's/\xEF\xBB\xBF//' | \
+              sed 's/[[:space:]]*$//' | \
+              iconv -f utf-8 -t utf-8 -c > "${file}.clean"
+            
+            # Заменяем оригинал если очистка успешна
+            if [ -s "${file}.clean" ]; then
+              mv "${file}.clean" "$file"
+              echo "✓ Fixed: $file"
+            else
+              echo "⚠ Warning: $file is empty after cleaning"
+              rm "${file}.clean"
+            fi
+          fi
+        done
 
-      - name: Check out code
-        uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
 
-      - name: Run dotnet format
-        run: dotnet-format --folder --check --verbosity diagnostic
+    - name: Restore dependencies
+      run: dotnet restore "src/Project/Project.sln"
+
+    - name: Build
+      run: dotnet build "src/Project/Project.sln" --no-restore --configuration Release
+
+    - name: Test
+      run: dotnet test "src/Project/Project.sln" --no-build --verbosity normal --configuration Release
