@@ -25,7 +25,7 @@ jobs:
       # ИЛИ если у вас другой файл: "Project/YourSolutionName.sln"
 
     - name: Build
-      run: dotnet build "Project/Project.sln" --no-restore --configuration Release
+      run: dotnet build "src/Project/Project.sln" --no-restore --configuration Release
 
     - name: Test
-      run: dotnet test "Project/Project.sln" --no-build --verbosity normal --configuration Release
+      run: dotnet test "src/Project/Project.sln" --no-build --verbosity normal --configuration Release
