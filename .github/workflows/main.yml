@@ -21,7 +21,7 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Restore dependencies
-      run: dotnet restore "Project/Project.sln"  # ← УКАЖИТЕ ПРАВИЛЬНЫЙ ПУТЬ К ВАШЕМУ .SLN ФАЙЛУ
+      run: dotnet restore "src/Project/Project.sln"  # ← УКАЖИТЕ ПРАВИЛЬНЫЙ ПУТЬ К ВАШЕМУ .SLN ФАЙЛУ
       # ИЛИ если у вас другой файл: "Project/YourSolutionName.sln"
 
     - name: Build
