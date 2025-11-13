@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yPfwUWPmMiw=",
+  "dgSpecHash": "gmFc/qcZJig=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Student\\Desktop\\Kwinxw\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\Users\\Student\\Desktop\\asdasdawdasd1\\Project_API_OfLiberation\\src\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Student\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\mapster\\7.4.0\\mapster.7.4.0.nupkg.sha512",
